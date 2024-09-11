@@ -16,8 +16,8 @@ class user_window:
         self.frame.pack(padx=10, pady=10, fill="both", expand=True)
         label = ctk.CTkLabel(self.frame, text='Name: ' + self.name, width=40, height=28, fg_color='transparent')
         label.pack(pady=10)
-        label = ctk.CTkLabel(self.frame, text='Balance: ' + str(self.balance), width=40, height=28, fg_color='transparent')
-        label.pack(pady=10)
+        self.balance_label = ctk.CTkLabel(self.frame, text='Balance: ' + str(self.balance), width=40, height=28, fg_color='transparent')
+        self.balance_label.pack(pady=10)
         label = ctk.CTkLabel(self.frame, text='Account Number: ' + str(self.account_number), width=40, height=28, fg_color='transparent')
         label.pack(pady=10)
 
@@ -91,6 +91,12 @@ class user_window:
         # Create a button to withdraw money
         withdraw_button = ctk.CTkButton(withdraw_window, text='Withdraw', width=140, height=28, command=lambda: self.withdraw(amount_entry, withdraw_window))
         withdraw_button.pack(pady=10)
+
+    def update_balance_labels(self):
+        self.balance_label.destroy()
+        self.balance_label = ctk.CTkLabel(self.frame, text='Balance: ' + str(self.balance), width=40, height=28, fg_color='transparent')
+        self.balance_label.pack(pady=10)
+
     def transfer(self, account_number_entry, amount_entry, transfer_window):
         account_number = account_number_entry.get()
         amount = amount_entry.get()
@@ -124,6 +130,7 @@ class user_window:
                 self.data.update_customer(self.account_number, {"balance": self.balance - amount})
                 self.data.update_customer(account_number, {"balance": user["balance"] + amount})
                 self.balance -= amount
+                self.update_balance_labels()
                 self.transfer_attempts = 0
                 transfer_window.destroy()
                 return
@@ -149,6 +156,7 @@ class user_window:
             return
         self.balance += amount
         self.data.update_customer(self.account_number, {"balance": self.balance})
+        self.update_balance_labels()
         add_window.destroy()
 
     def withdraw(self, amount_entry, withdraw_window):
@@ -173,4 +181,5 @@ class user_window:
             return
         self.balance -= amount
         self.data.update_customer(self.account_number, {"balance": self.balance})
+        self.update_balance_labels()
         withdraw_window.destroy()

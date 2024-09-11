@@ -23,5 +23,5 @@ class dbManagement:
         return data
 
     def write_file(self, data):
-        with open("frontend/data.json", "w") as f:
+        with open("data.json", "w") as f:
             json.dump(data, f)
