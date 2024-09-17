@@ -1,5 +1,3 @@
-import json
-
 class Customer():
     def __init__(self, name, accountNumber,password,balance):
         self.name = name

@@ -1,6 +1,5 @@
 import customtkinter as ctk
 from transfer import Money_Management
-from dbmanagement import dbManagement
 from customer import Customer
 
 class user_window:
