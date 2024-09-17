@@ -11,7 +11,8 @@ class auth:
     def __counter_check(self):
         if self.counter > 2:
             return False
-        return True
+        else:
+            return True
 
     def login(self):
         if not self.__counter_check():
