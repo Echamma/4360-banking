@@ -22,5 +22,6 @@ class auth:
         for user in data:
             if user["name"] == self.username and user["password"] == self.password:
                 return Customer(user["name"], user["accountNumber"], user["password"],user["balance"])
-        self.counter += 1
-        return "invalid username or password"   
+            else:
+                self.counter += 1
+                return "invalid username or password"   
