@@ -6,6 +6,6 @@ class Money_Management:
         self.user1 = user1
         self.user2 = user2
 
-    def transfer_za_money(self,amount):
+    def transfer_money(self,amount):
         self.user1.withdraw(amount)
         self.user2.deposit(amount)

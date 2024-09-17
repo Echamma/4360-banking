@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from transfers import Money_Management
+from transfer import Money_Management
 from dbmanagement import dbManagement
 from customer import Customer
 
@@ -126,7 +126,7 @@ class user_window:
                     transfer_window.destroy()
                     return
                 transfer = Money_Management(Customer(self.name, self.account_number, "", self.balance), Customer(user["name"], user["accountNumber"], user["password"], user["balance"]))
-                transfer.transfer_za_money(amount)
+                transfer.transfer_money(amount)
                 self.data.update_customer(self.account_number, {"balance": self.balance - amount})
                 self.data.update_customer(account_number, {"balance": user["balance"] + amount})
                 self.balance -= amount
