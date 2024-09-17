@@ -38,7 +38,7 @@ class user_window:
         self.toplevel.mainloop()
 
     def transfer_money(self):
-        if self.transfer_attempts >= 3:
+        if self.transfer_attempts > 2:
             print("You have exceeded the maximum number of transfer attempts.")
             return
         # Create a new window for transfer money
