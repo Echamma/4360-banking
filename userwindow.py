@@ -1,6 +1,5 @@
 import customtkinter as ctk
-from transfers import Money_Management
-from dbmanagement import dbManagement
+from transfer import Money_Management
 from customer import Customer
 
 class user_window:
@@ -39,7 +38,7 @@ class user_window:
         self.toplevel.mainloop()
 
     def transfer_money(self):
-        if self.transfer_attempts >= 3:
+        if self.transfer_attempts > 2:
             print("You have exceeded the maximum number of transfer attempts.")
             return
         # Create a new window for transfer money
@@ -126,7 +125,7 @@ class user_window:
                     transfer_window.destroy()
                     return
                 transfer = Money_Management(Customer(self.name, self.account_number, "", self.balance), Customer(user["name"], user["accountNumber"], user["password"], user["balance"]))
-                transfer.transfer_za_money(amount)
+                transfer.transfer_money(amount)
                 self.data.update_customer(self.account_number, {"balance": self.balance - amount})
                 self.data.update_customer(account_number, {"balance": user["balance"] + amount})
                 self.balance -= amount

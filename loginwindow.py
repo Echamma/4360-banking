@@ -1,10 +1,5 @@
 import customtkinter
 from tkinter import *
-import users
-import json
-from dbmanagement import dbManagement
-from customer import Customer
-from transfers import Money_Management
 from auth import auth
 from userwindow import user_window
 
