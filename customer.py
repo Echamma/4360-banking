@@ -7,14 +7,20 @@ class Customer():
         self.counter = 0
 
     def deposit(self, deposit_amount):
-        if(deposit_amount > 2000 or deposit_amount < 0 or self.counter > 2):
-            print("Invalid Transaction")
+        if(deposit_amount > 2000):
+            print("Invalid Transaction: Deposit amount must be less than 2000")
+        elif(deposit_amount < 0):
+            print("Invalid Transaction: Deposit amount must be more than 0")
+        elif(self.counter > 2):
+            print("Invalid Transaction: Too many failed login attempts")
         else:
             self.balance += int(deposit_amount)
 
     def withdraw(self, withdraw_amount):
-        if(withdraw_amount > self.balance or withdraw_amount < 0):
-            return "Invalid Transaction"        
+        if(withdraw_amount > self.balance):
+            print("Invalid Transaction: Withdraw amount cannot be more than what's currently in account")
+        elif(withdraw_amount < 0):
+            print("Invalid Transaction: Withdraw amount must be more than 0")
         else:
             self.balance -= int(withdraw_amount)
 
